@@ -24,12 +24,6 @@ class MoviesController < ApplicationController
     end
   end
 
-  private
-
-  def movie_params
-    params.require(:movie).permit(:title, :release_date, :description)
-  end
-
   def edit
     id = params['id']
     @movie = Movie.find(id)
@@ -50,5 +44,13 @@ class MoviesController < ApplicationController
   rescue ActiveRecord::RecordNotFound
     render file: "#{Rails.root}/public/404.html", status:404
   end
+
+  private
+
+  def movie_params
+    params.require(:movie).permit(:title, :release_date, :description)
+  end
+
+
 
 end
